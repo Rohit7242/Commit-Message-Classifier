@@ -164,7 +164,7 @@ with col1:
                 )
                 st.plotly_chart(fig, use_container_width=True)
                 
-                # Fun fact based on prediction
+                # Fun fact based on prediction - FIXED THE APOSTROPHE ISSUE
                 fun_facts = {
                     'enhance file': "✨ Your commit is enhancing the matrix!",
                     'fix issues': "🐛 Squashing bugs like a pro!",
@@ -178,7 +178,9 @@ with col1:
                     'add unit': "🧪 Science, bitch!"
                 }
                 
-                st.info(f"💡 **Fun Fact**: {fun_facts.get(predicted_class, 'You're making the world a better place, one commit at a time!')}")
+                default_fact = "You're making the world a better place, one commit at a time!"
+                fact = fun_facts.get(predicted_class, default_fact)
+                st.info(f"💡 **Fun Fact**: {fact}")
                 
         else:
             st.warning("⚠️ Please enter a commit message to analyze!")
