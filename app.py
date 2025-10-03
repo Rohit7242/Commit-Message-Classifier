@@ -1,9 +1,12 @@
 import streamlit as st
-import joblib
+import pickle
 
 # Load the trained model and vectorizer
-vectorizer = joblib.load("vectorizer.pkl")
-model = joblib.load("commit_classifier.pkl")
+with open("vectorizer.pkl", "rb") as f:
+    vectorizer = pickle.load(f)
+
+with open("commit_classifier.pkl", "rb") as f:
+    model = pickle.load(f)
 
 # Streamlit app
 st.set_page_config(page_title="Commit Message Classifier", page_icon="💻", layout="centered")
