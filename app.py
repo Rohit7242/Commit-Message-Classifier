@@ -1,5 +1,6 @@
 import streamlit as st
 import pickle
+import sklearn
 import re
 import numpy as np
 import pandas as pd
