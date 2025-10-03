@@ -1,5 +1,5 @@
 import streamlit as st
-import joblib
+import pickle
 import re
 import numpy as np
 import pandas as pd
@@ -19,8 +19,11 @@ def clean_text(text):
 @st.cache_resource
 def load_models():
     try:
-        model = joblib.load("commit_classifier.pkl")
-        vectorizer = joblib.load("vectorizer.pkl")
+    with open("commit_classifier.pkl", "rb") as f:
+        model = pickle.load(f)
+
+    with open("vectorizer.pkl", "rb") as f:
+        vectorizer = pickle.load(f)
         return model, vectorizer
     except FileNotFoundError:
         st.error("❌ Pickle files not found! Make sure 'commit_classifier.pkl' and 'vectorizer.pkl' are in the app folder.")
